@@ -1,0 +1,22 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Ported from nrf5340_firmware's board overlay (ADC->BLE pipeline subset).
+ */
+
+/* Just "okay" + explicit compatible so the node exists and is clocked for
+ * direct nrfx_saadc access from sampling_source_nrfx.c (no Zephyr-ADC-API
+ * channel@N bindings needed — that driver talks to the SAADC peripheral
+ * directly). */
+&adc {
+	status = "okay";
+	compatible = "nordic,nrf-saadc";
+};
+
+/* BT40F module (this hardware) has no external QSPI NOR flash — see the
+ * matching fix in nrf5340_firmware's overlay. Without this, boot logs
+ * "qspi_nor: JEDEC id [ff ff ff] expect [c2 28 17]" probing a chip that
+ * was never populated. */
+&qspi {
+	status = "disabled";
+};
