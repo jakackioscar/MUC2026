@@ -1,0 +1,6 @@
+{
+    "cmake.sourceDirectory": "C:/Projects/MUC2026/hello_world_showcase-streaming-demo_2026-10-14/hello_world",
+    "nrf-connect.applications": [
+        "${workspaceFolder}\\IMUnrf"
+    ]
+}
